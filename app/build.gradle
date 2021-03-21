@@ -23,6 +23,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", 'BASE_URL', "\"https://listen-api.listennotes.com/api/v2\""
+            buildConfigField "String", 'API_KEY', "\"\""
+        }
+
+        debug {
+            buildConfigField "String", 'BASE_URL', "\"https://listen-api-test.listennotes.com/api/v2\""
+            buildConfigField "String", 'API_KEY', apikeyProperties['finnhub_api_key']
         }
     }
     buildFeatures {
@@ -68,4 +75,9 @@ dependencies {
     testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    //Network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
 }

@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/container"
         app:layout_constraintTop_toTopOf="@id/container"
-        tools:text="some text" />
+        android:text="balls" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,4 +41,6 @@ ext {
     robolectricVersion = '4.3.1'
     archTestingVersion = '2.1.0'
     roomVersion = '2.2.5'
+    retrofit = '2.9.0'
+    okhttp = '4.7.2'
 }
