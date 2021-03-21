@@ -5,6 +5,10 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def apikeyPropertiesFile = rootProject.file("api_key.properties");
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
@@ -29,7 +33,7 @@ android {
 
         debug {
             buildConfigField "String", 'BASE_URL', "\"https://listen-api-test.listennotes.com/api/v2\""
-//            buildConfigField "String", 'API_KEY', apikeyProperties['finnhub_api_key']
+            buildConfigField "String", 'API_KEY', apikeyProperties['listen_notes_api_key']
         }
     }
     buildFeatures {
