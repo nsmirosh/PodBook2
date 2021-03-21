@@ -29,7 +29,7 @@ android {
 
         debug {
             buildConfigField "String", 'BASE_URL', "\"https://listen-api-test.listennotes.com/api/v2\""
-            buildConfigField "String", 'API_KEY', apikeyProperties['finnhub_api_key']
+//            buildConfigField "String", 'API_KEY', apikeyProperties['finnhub_api_key']
         }
     }
     buildFeatures {
