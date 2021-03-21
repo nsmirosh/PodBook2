@@ -1,19 +1,17 @@
 package com.nickmirosh.podbook.network
 
-import com.example.dividendify.BuildConfig
 import com.google.gson.GsonBuilder
 import com.nickmirosh.podbook.BuildConfig
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 
-const val TOKEN = "token"
-const val CONNECT_TIME_OUT_SECONDS = 30L
-const val READ_TIME_OUT_SECONDS = 30L
+const val apiKey = "X-ListenAPI-Key"
+const val connectTimeOutSeconds = 30L
+const val readTimeOutSeconds = 30L
 
 
 abstract class BaseRepository {
@@ -25,13 +23,13 @@ abstract class BaseRepository {
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
 
         val client = OkHttpClient.Builder()
-            .connectTimeout(CONNECT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
-            .readTimeout(READ_TIME_OUT_SECONDS, TimeUnit.SECONDS)
+            .connectTimeout(connectTimeOutSeconds, TimeUnit.SECONDS)
+            .readTimeout(readTimeOutSeconds, TimeUnit.SECONDS)
             .addInterceptor(logging)
             .addInterceptor(Interceptor { chain ->
                 var request: Request = chain.request()
                 val url = request.url.newBuilder()
-                    .addQueryParameter(TOKEN, BuildConfig.API_KEY)
+                    .addQueryParameter(apiKey, BuildConfig.API_KEY)
                     .build()
                 request = request.newBuilder().url(url).build()
                 chain.proceed(request)

@@ -1,11 +1,10 @@
 # PodBook
 
 
-## An app that will allow you to find various podcasts and listen to them, as well as upload your own, including audiobooks.
+### An app that will allow you to find various podcasts and listen to them, as well as upload your own, including audiobooks.
 
 
 
-
-##TODO
+### Backlog
 - [ ] Implement a proper repository pattern
 
