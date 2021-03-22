@@ -7,8 +7,9 @@ import retrofit2.http.Query
 
 interface SearchService {
 
-    @GET("/search")
+    @GET("search")
     fun performSearch(
         @Query("q") query: String
     ): Call<LnResponse>?
+
 }

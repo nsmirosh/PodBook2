@@ -27,11 +27,7 @@ abstract class BaseRepository {
             .readTimeout(readTimeOutSeconds, TimeUnit.SECONDS)
             .addInterceptor(logging)
             .addInterceptor(Interceptor { chain ->
-                var request: Request = chain.request()
-                val url = request.url.newBuilder()
-                    .addQueryParameter(apiKey, BuildConfig.API_KEY)
-                    .build()
-                request = request.newBuilder().url(url).build()
+                val request = chain.request().newBuilder().addHeader(apiKey, BuildConfig.API_KEY).build()
                 chain.proceed(request)
             })
             .build()
