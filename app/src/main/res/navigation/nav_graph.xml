@@ -8,6 +8,22 @@
         android:id="@+id/homeFragment"
         android:name="com.nickmirosh.podbook.home.HomeFragment"
         android:label="HomeFragment">
+
+        <action
+            android:id="@+id/action_homeFragment_To_episodeFragment"
+            app:destination="@id/episodeFragment" />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.nickmirosh.podbook.episode.EpisodeFragment"
+        android:label="EpisodeFragment">
+
+        <argument
+            android:name="episodeId"
+            app:argType="string" />
     </fragment>
 
 </navigation>

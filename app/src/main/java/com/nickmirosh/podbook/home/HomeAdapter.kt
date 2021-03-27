@@ -1,6 +1,5 @@
 package com.nickmirosh.podbook.home
 
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +7,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nickmirosh.podbook.R
-import com.nickmirosh.podbook.entity.Podcast
 import com.nickmirosh.podbook.network.SearchResult
 
-class HomeAdapter :
+class HomeAdapter(val onInteractionListener: InteractionListener) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+
+
+    interface InteractionListener {
+        fun onEpisodeClick(episodeId: String)
+    }
 
     private var dataSet: List<SearchResult>? = null
 
@@ -39,6 +42,9 @@ class HomeAdapter :
 
         with(viewHolder) {
             name.text = item.title
+            name.setOnClickListener {
+                onInteractionListener.onEpisodeClick(item.id)
+            }
         }
     }
 
