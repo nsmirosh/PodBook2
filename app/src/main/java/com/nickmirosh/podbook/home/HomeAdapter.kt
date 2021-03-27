@@ -14,10 +14,11 @@ import com.nickmirosh.podbook.network.SearchResult
 class HomeAdapter :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
-    private lateinit var dataSet: List<SearchResult>
+    private var dataSet: List<SearchResult>? = null
 
     fun setData(dataSet: List<SearchResult>) {
         this.dataSet = dataSet
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -34,12 +35,12 @@ class HomeAdapter :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        val item = dataSet[position]
+        val item = dataSet!![position]
 
         with(viewHolder) {
             name.text = item.title
         }
     }
 
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = dataSet?.size ?: 0
 }

@@ -7,26 +7,35 @@
 
     <EditText
         android:id="@+id/searchET"
-        app:layout_constraintStart_toStartOf="@id/container"
-        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
-        app:layout_constraintTop_toTopOf="@id/container"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
         app:layout_constraintHorizontal_weight="7"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toTopOf="@id/container" />
 
     <Button
         android:id="@+id/searchBtn"
-        app:layout_constraintStart_toEndOf="@id/searchET"
-        app:layout_constraintTop_toTopOf="@id/container"
-        app:layout_constraintHorizontal_weight="3"
-        android:text="@string/search"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toEndOf="@id/searchET"
+        app:layout_constraintTop_toTopOf="@id/container" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchResultRV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toBottomOf="@id/searchET" />
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@id/container"
         app:layout_constraintTop_toBottomOf="@id/searchET" />
 

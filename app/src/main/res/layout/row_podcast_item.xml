@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/thumbnail"
@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="@id/container"
         app:layout_constraintTop_toBottomOf="@id/thumbnail"
         android:layout_marginTop="@dimen/standard_margin"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
