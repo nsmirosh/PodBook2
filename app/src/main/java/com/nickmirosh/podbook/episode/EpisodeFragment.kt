@@ -6,19 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nickmirosh.podbook.R
 import com.nickmirosh.podbook.databinding.FragmentEpisodeBinding
-import com.nickmirosh.podbook.home.HomeAdapter
-import com.nickmirosh.podbook.network.SearchResult
+import com.nickmirosh.podbook.network.Episode
 
 class EpisodeFragment : Fragment(R.layout.fragment_episode) {
 
     val episodeViewModel: EpisodeViewModel by viewModels()
 
     val args: EpisodeFragmentArgs by navArgs()
-
 
     private var _binding: FragmentEpisodeBinding? = null
     private val binding get() = _binding!!
@@ -50,7 +47,7 @@ class EpisodeFragment : Fragment(R.layout.fragment_episode) {
         )
     }
 
-    private fun onDataReceived(data: List<SearchResult>) {
+    private fun onDataReceived(data: List<Episode>) {
 
 
     }

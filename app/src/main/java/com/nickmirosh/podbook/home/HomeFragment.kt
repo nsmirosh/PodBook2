@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nickmirosh.podbook.R
 import com.nickmirosh.podbook.databinding.FragmentHomeBinding
-import com.nickmirosh.podbook.network.SearchResult
+import com.nickmirosh.podbook.network.Episode
 import com.nickmirosh.podbook.utils.gone
 import com.nickmirosh.podbook.utils.visible
 
@@ -52,7 +52,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeAdapter.InteractionLi
         )
     }
 
-    private fun onDataReceived(data: List<SearchResult>) {
+    private fun onDataReceived(data: List<Episode>) {
         with(binding) {
             progressBar.gone()
             searchResultRV.visible()
