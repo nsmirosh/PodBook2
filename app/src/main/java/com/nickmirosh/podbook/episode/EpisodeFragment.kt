@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.SimpleExoPlayer
 import com.nickmirosh.podbook.R
 import com.nickmirosh.podbook.databinding.FragmentEpisodeBinding
 import com.nickmirosh.podbook.entity.Episode
+import com.nickmirosh.podbook.utils.secondsToTimeString
 
 class EpisodeFragment : Fragment(R.layout.fragment_episode) {
 
@@ -33,6 +36,25 @@ class EpisodeFragment : Fragment(R.layout.fragment_episode) {
         super.onViewCreated(view, savedInstanceState)
         startObservingLiveData()
         getEpisodeData()
+        initViews()
+    }
+
+    private fun initViews() {
+        binding.playBtn.setOnClickListener {
+            playAudio(episodeViewModel.episode.value!!.audio)
+        }
+    }
+
+    private fun playAudio(url: String) {
+        val player = SimpleExoPlayer.Builder(this.requireActivity()).build()
+        binding.videoView.setPlayer(player)
+        val mediaItem = MediaItem.fromUri(url);
+        player.setMediaItem(mediaItem);
+        player.prepare()
+
+    }
+
+    private fun initializePlayer() {
     }
 
     private fun getEpisodeData() {
@@ -48,8 +70,10 @@ class EpisodeFragment : Fragment(R.layout.fragment_episode) {
 
     private fun onDataReceived(episode: Episode) {
         with(binding) {
-            episodeNameTv.text = episode.title
-            lengthTv.text = episode.lengthInSecs
+            with(episode) {
+                episodeNameTv.text = title
+                lengthTv.text = secondsToTimeString(lengthInSecs.toInt())
+            }
         }
     }
 
