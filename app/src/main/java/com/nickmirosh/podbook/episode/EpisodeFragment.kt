@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.nickmirosh.podbook.R
 import com.nickmirosh.podbook.databinding.FragmentEpisodeBinding
-import com.nickmirosh.podbook.network.Episode
+import com.nickmirosh.podbook.entity.Episode
 
 class EpisodeFragment : Fragment(R.layout.fragment_episode) {
 
@@ -31,25 +31,26 @@ class EpisodeFragment : Fragment(R.layout.fragment_episode) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.episodeNameTv.text = args.episodeId
         startObservingLiveData()
-        setUpViews()
+        getEpisodeData()
     }
 
-    private fun setUpViews() {
-
+    private fun getEpisodeData() {
+        episodeViewModel.getEpisodeData(args.episodeId)
     }
 
     private fun startObservingLiveData() {
-        episodeViewModel.searchResults.observe(
+        episodeViewModel.episode.observe(
             viewLifecycleOwner,
             { onDataReceived(it) }
         )
     }
 
-    private fun onDataReceived(data: List<Episode>) {
-
-
+    private fun onDataReceived(episode: Episode) {
+        with(binding) {
+            episodeNameTv.text = episode.title
+            lengthTv.text = episode.lengthInSecs
+        }
     }
 
     override fun onDestroyView() {

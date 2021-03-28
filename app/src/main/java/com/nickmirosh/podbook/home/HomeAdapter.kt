@@ -7,7 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nickmirosh.podbook.R
-import com.nickmirosh.podbook.network.Episode
+import com.nickmirosh.podbook.entity.Episode
+import com.nickmirosh.podbook.entity.SearchResult
 
 class HomeAdapter(val onInteractionListener: InteractionListener) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
@@ -17,9 +18,9 @@ class HomeAdapter(val onInteractionListener: InteractionListener) :
         fun onEpisodeClick(episodeId: String)
     }
 
-    private var dataSet: List<Episode>? = null
+    private var dataSet: List<SearchResult>? = null
 
-    fun setData(dataSet: List<Episode>) {
+    fun setData(dataSet: List<SearchResult>) {
         this.dataSet = dataSet
         notifyDataSetChanged()
     }

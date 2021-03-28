@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_height="match_parent">
 
@@ -10,6 +11,27 @@
         android:layout_margin="@dimen/standard_margin"
         app:layout_constraintStart_toStartOf="@id/container"
         app:layout_constraintTop_toTopOf="@id/container"
+        android:layout_width="wrap_content"
+        tools:text="Some star wars episode"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/lengthTv"
+        android:layout_margin="@dimen/standard_margin"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toBottomOf="@id/episodeNameTv"
+        tools:text="Length: 1:56"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/playBtn"
+        android:layout_margin="@dimen/standard_margin"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toBottomOf="@id/lengthTv"
+        android:text="@string/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

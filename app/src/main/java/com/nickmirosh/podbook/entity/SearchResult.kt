@@ -1,9 +1,9 @@
-package com.nickmirosh.podbook.network
+package com.nickmirosh.podbook.entity
 
 import com.google.gson.annotations.SerializedName
 import com.nickmirosh.podbook.entity.Podcast
 
-data class Episode(
+data class SearchResult(
     val id: String,
     val thumbnail: String,
     @SerializedName("title_original")

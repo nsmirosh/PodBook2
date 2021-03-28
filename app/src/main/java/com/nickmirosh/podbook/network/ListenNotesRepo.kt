@@ -1,15 +1,14 @@
 package com.example.dividendify.data
 
 import com.nickmirosh.podbook.network.BaseRepository
-import com.nickmirosh.podbook.network.LnResponse
-import com.nickmirosh.podbook.network.Episode
+import com.nickmirosh.podbook.entity.LnResponse
+import com.nickmirosh.podbook.entity.Episode
+import com.nickmirosh.podbook.entity.SearchResult
 import com.nickmirosh.podbook.network.api.DirectoryApi
 import com.nickmirosh.podbook.network.api.SearchApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
-import timber.log.Timber
 
 
 class ListenNotesRepo : BaseRepository() {
@@ -18,7 +17,7 @@ class ListenNotesRepo : BaseRepository() {
 
     val directoryApi = buildRetrofit().create(DirectoryApi::class.java)
 
-    suspend fun performCoroutineSearch(query: String): List<Episode> = withContext(Dispatchers.IO) {
+    suspend fun performCoroutineSearch(query: String): List<SearchResult> = withContext(Dispatchers.IO) {
         val searchDeffered = async { searchApi.performSearch(query).execute() }
         val searchResponse = searchDeffered.await()
         val actualResponse: LnResponse = searchResponse.body()!!
